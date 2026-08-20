@@ -16,6 +16,26 @@ get what customer want to do
 write all to a database
 
 
+Program has an input interface that says welcome … --> 
+customer inputs 1st input --> 
+Program request Full name in a require format -->
+Program displays input tab for Customer to input their name. and customer puts in full name in required formate, program 
+splits the name into first, last, middle name and holds the names in the program state to inserted into database later. --->
+Program displays name and input for user to  confirm if the name is correct or not 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 code

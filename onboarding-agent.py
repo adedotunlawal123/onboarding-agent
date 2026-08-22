@@ -15,14 +15,18 @@ class State(TypedDict):
     last_name: Optional[str]
     email: Optional[str]
 
-
+sys_msg = SystemMessage(content="You are a helpful to confirm if a user input is negative or positive. positive responses are.")
 
 # Initialize our LLM
 
 from dotenv import load_dotenv
 load_dotenv()
 
-model = ChatOpenAI(temperature=0)
+llm = ChatOpenAI(model="gpt-4o-mini")
+
+def call_llm(state: State):
+    response = llm.invoke([sys_msg] + [HumanMessage(content=state["user_input"])])
+    return {"output": response.content}
 
 def take_input(state):
     state["user_input"] = input("Hi there! I am Jeff, what can I do for you today?")

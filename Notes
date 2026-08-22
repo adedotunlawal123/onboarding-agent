@@ -27,7 +27,8 @@ Program displays name and input for user to  confirm if the name is correct or n
 
 
 
-
+LLM will read user input, if positive or yes or sure etc, it moves down the graph, 
+if negative it moves back to get the necessary detail (name or phone number etc)
 
 
 

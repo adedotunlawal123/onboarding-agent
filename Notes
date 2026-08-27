@@ -1,11 +1,9 @@
 SCOPE: A generalized unboarding agent, welcomes the customer,  based on form filled (name, what they want to buy, etc) it get information. It can take text and voice.
 
 
-capability: elicit/get info from customer, writes info/response in a DB tied to that customer, at the end of inyeraction is a structured intake form of the customer that has the name, phone no. email etc (what the person wants to buy)
+capability: elicit/get info from customer, writes info/response in a DB tied to that customer, at the end of inyeraction is a structured intake form of the customer that has the name, phone no. email etc (what the person wants to buy). LLM confirm if user input is correct, if positive or yes or sure etc, it moves down the graph, 
+if negative it moves back to get the necessary detail (name or phone number etc)
 
-
-Goal:  
-design, build and deploy(if necessary) a generalized agent (LLM with the following if necessary :knowledge base, tools etc)  that takes in information based on a form needed to be filled (that it knows I need to fill this form, I need to get this information from the customer). The agent should be able to be used for different businesses.
 
 objectives:
 welcome
@@ -19,78 +17,11 @@ write all to a database
 Program has an input interface that says welcome … --> 
 customer inputs 1st input --> 
 Program request Full name in a require format -->
-Program displays input tab for Customer to input their name. and customer puts in full name in required formate, program 
+Program displays input tab for Customer to input their name. and customer puts in full name in required format, program 
 splits the name into first, last, middle name and holds the names in the program state to inserted into database later. --->
-Program displays name and input for user to  confirm if the name is correct or not 
+Program displays name and input for user to  confirm if the name is correct or not, etc
 
 
-
-
-
-LLM will read user input, if positive or yes or sure etc, it moves down the graph, 
-if negative it moves back to get the necessary detail (name or phone number etc)
-
-
-
-
-
-
-
-
-
-
-code
-----
-
-class OnboardState(TypedDict):
-    # The name being collected
-    name: list[str]  # Contains firstname, lastname, middlename
-
-    # The email being collected
-    email: str
-
-    # The phone numer being collected
-    phone_no: int
-
-    # what customer wants to do
-    request: str
-
-# Initialize our LLM
-model = ChatOpenAI(temperature=0)
-
-    def take_input()
-      user_input = input("Type 'exit' to stop: ")
-   
-    def welcome():
-      prompt = f""" You are acting as an onboarding agent. You will welcome the customer by saying:
-               Hi ther! I am Jeff, what can I do for you today? """
-
-    def get_name(state: OnboardState):
-       """Jeff gets the name of the user"""
-       prompt = f"""You are acting as an onboarding agent. You will onboard new users by getting their names. Ask them to provide their name in this order: First name, Last name, Middle name."""
-
-    
-
-    design of functions for handling database inputs
-    ------------------------------------------------------------
-    
-   import sqlite3
-
-# 1. The SINGLE generic function that handles the database work
-def execute_query(query, params=()):
-    with sqlite3.connect("my_database.db") as conn:
-        cursor = conn.cursor()
-        cursor.execute(query, params)
-        conn.commit()
-
-# 2. UNIQUE functions to handle the unique logic of each item
-def insert_user(username, email):
-    query = "INSERT INTO users (username, email) VALUES (?, ?)"
-    execute_query(query, (username, email))
-
-def insert_product(name, price):
-    query = "INSERT INTO products (name, price) VALUES (?, ?)"
-    execute_query(query, (name, price))
        
     
     

@@ -47,20 +47,6 @@ def welcome(state):
     print("\n")
     print("Hi there! I am Jeff, Trust you are good! Firstly, let me get your details whats your name, provide it in this order: First name Last name Middle name. Thanks!")
 
-#def split_name(state):
-    #first_name, middle_name, last_name = (state["user_input"]).split()
-    #state["first_name"] = first_name
-    #state["middle_name"] = middle_name
-    #state["last_name"] = last_name
-    #print(f"confirm your name is: {first_name}, {last_name}, {middle_name}")
-    #return{"user_input": state["user_input"], "first_name": state["first_name"], "last_name": state["last_name"], "middle_name": state["middle_name"]}
-
-#def confirmation(state):
-    #confirm = input("Please confirm your details are correct (yes/no): ")
-    #if confirm.lower() == yes:
-        #return
-    #if confirm.lower() == no:
-
 
 def get_email(state):
     email =input("Please provide your email address: ")
